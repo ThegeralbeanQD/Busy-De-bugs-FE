@@ -1,6 +1,6 @@
-  const url = 'https://brain-debug.onrender.com/users';
-
-fetch("http://localhost:3000/users")
+const url = "https://brain-debug.onrender.com/users";
+const localURL = "http://localhost:3000/users";
+fetch(url)
     .then((response) => {
         return response.json();
     })
@@ -66,7 +66,7 @@ async function logUserScore(e) {
         },
         body: JSON.stringify(data, null, 2)
     }
-    const response = await fetch("http://localhost:3000/users", options);
+    const response = await fetch(url, options);
 
     if (response.status == 201) {
       e.target.username.value = ''
