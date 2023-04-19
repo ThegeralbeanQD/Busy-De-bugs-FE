@@ -3,11 +3,20 @@ const findTopic = localStorage.getItem("topic")
 const fetchQuiz = async (topic) => {
   const quizes = (await fetch(`http://localhost:3000/quiz/${topic}`)).json()
   return quizes
-
 }
 
+
+
 const displayTopicQuizes = async (topic) => {
+  let score = {
+    music: 0,
+    history: 0,
+    literature: 0,
+    geography: 0
+  }
+
   const topicQuizes = await fetchQuiz(topic)
+  console.log(topicQuizes)
 
   let questionIndex = -1
 
@@ -63,29 +72,43 @@ const displayTopicQuizes = async (topic) => {
     answers.forEach((ans, index) => {
       const li = document.createElement('li')
       li.append(ans.answer)
+      console.log(topicQuizes[questionIndex].topic)
 
       li.setAttribute('class', 'answers')
       ol.appendChild(li)
       quizList.appendChild(ol)
+      let clicked = false
       li.addEventListener('click', function() {
-        let answer = ans.is_correct
-        if (answer === true) {
-          alert('You got it!')
-        } else {
-          alert('Try again!')
+        if (!clicked) {
+          let answer = ans.is_correct
+          if (answer === true) {
+            alert('You got it!')
+            if (topic.toLowerCase() !== 'random') {
+              score[topic.toLowerCase()] += 1
+              // console.log(score)
+              localStorage.setItem("score", JSON.stringify(score))
+              clicked = true
+            }
+            if (topic.toLowerCase() === 'random') {
+              score[topicQuizes[questionIndex].topic.toLowerCase()] += 1
+              localStorage.setItem("score", JSON.stringify(score))
+              clicked = true
+            }
+          } else {
+            alert('Try again!')
+          }
         }
       })
-    })
+    })    // // console.log(localStorage.getItem(JSON.parse(score)))
   }
 
   nextQuestion()
+
 
   // TODO - this should direct the user to the score page together with the data
   const submitAnswer = () => {
     console.log('questions over')
   }
-
-
 }
 
 displayTopicQuizes(findTopic)
