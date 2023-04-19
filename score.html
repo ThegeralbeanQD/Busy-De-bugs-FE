@@ -6,23 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="score.js"></script>
+    <link rel="stylesheet" href="score.css">
     <title>Document</title>
 </head>
 
 <body>
-    <section>
+    <section id="score-section">
 
-        <div>
-            <h2>Score</h2>
+        <div id="leaderboard">
+            <h2>Leaderboard</h2>
             <ul id="scoreList"></ul>
         </div>
-
-        <form method="post" id="log-user-form">
-            <label for="usernameInput">Username:</label>
-            <input type="text" name="username" placeholder="Username" id="usernameInput">
-            <input type="submit" value="Create">
-        </form>
-
+        <div id="scoreboard-left">
+            <div id="form-div">
+                <form method="post" id="log-user-form">
+                    <label for="usernameInput">Username:</label>
+                    <input type="text" name="username" placeholder="Username" id="usernameInput">
+                    <input type="submit" value="Create">
+                </form>
+            </div>
+            <section id="user-scores">
+                <div class="row">
+                    <div class="column">
+                        <div id="music-score">
+                            <h2>Music</h2>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="geo-score">
+                            <h2>geo</h2>
+                        </div>                               
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <div id="lit-score">
+                            <h2>lit</h2>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="history-score">
+                            <h2>history</h2>
+                        </div>                               
+                    </div>
+                </div>
+            </section>
+        </div>
 
     </section>
 
