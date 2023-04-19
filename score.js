@@ -1,33 +1,3 @@
-// const ul = document.getElementById("scoreList");
-// let li = document.createElement("li");
-
-// let x = 0
-
-// while (x < 7) {
-//     li.setAttribute('id', 'newListItem');
-//     li.innerText = 'New List Item';
-//     ul.appendChild(li);
-//     x++
-// }
-
-// fetch('http://localhost:3000/users')
-//     .then((response) => {
-//         return response.json();
-//     })
-//     .then((data) => {
-//         let authors = data;
-//         authors.map(function (author) {
-
-
-
-//             let li = document.createElement('li');
-//             let name = document.createElement('h2');
-//             name.innerHTML = author.username;
-//             li.appendChild(name);
-//             ul.appendChild(li);
-//         });
-//     })
-
   const url = 'https://brain-debug.onrender.com/users';
 
 fetch(url)
@@ -60,12 +30,48 @@ fetch(url)
         });
     
     // find total score of a user
-    function sumOfScores(user) {
-        let totalScore = 0;
-    
-        for (let topic in user) {
-        totalScore += user[topic];
-        }
-    
-        return totalScore;
+function sumOfScores(user) {
+    let totalScore = 0;
+
+    for (let topic in user) {
+    totalScore += user[topic];
     }
+
+    return totalScore;
+}
+
+let musicScore, geoScore, litScore, historyScore = 0;
+
+const form = document.querySelector("#log-user-form");
+form.addEventListener("submit", logUserScore);
+
+async function logUserScore(e) {
+    e.preventDefault();
+    console.log(e.target.elements.username.value);
+
+    const data = {
+        username: e.target.elements.username.value,
+        score: {
+            music: musicScore,
+            geography: geoScore,
+            literature: litScore,
+            history: historyScore
+        }
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(data, null, 2)
+    }
+    const response = await fetch("http://localhost:3000/users", options);
+
+    if (response.status == 201) {
+      e.target.username.value = ''
+      alert("Score added.")
+    }
+
+}
+    

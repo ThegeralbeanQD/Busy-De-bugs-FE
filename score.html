@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,24 @@
     <script defer src="score.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <div>
-        <h2>Score</h2>
-        <ul id="scoreList"></ul>
-    </div>
+    <section>
+
+        <div>
+            <h2>Score</h2>
+            <ul id="scoreList"></ul>
+        </div>
+
+        <form method="post" id="log-user-form">
+            <label for="usernameInput">Username:</label>
+            <input type="text" name="username" placeholder="Username" id="usernameInput">
+            <input type="submit" value="Create">
+        </form>
+
+
+    </section>
+
 </body>
+
 </html>
