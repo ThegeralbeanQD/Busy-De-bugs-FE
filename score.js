@@ -1,6 +1,6 @@
   const url = 'https://brain-debug.onrender.com/users';
 
-fetch(url)
+fetch("http://localhost:3000/users")
     .then((response) => {
         return response.json();
     })
@@ -18,7 +18,7 @@ fetch(url)
         let ul = document.getElementById('scoreList');
         
         // make it only top 3 by looping
-        for (let i = 0; i < 3 && i < users.length; i++) {
+        for (let i = 0; i < 10 && i < users.length; i++) {
             let user = users[i];
             // get sum score for the current user
             let totalScore = sumOfScores(user.score);
@@ -27,7 +27,7 @@ fetch(url)
             li.innerHTML = `${user.username}: ${totalScore}`;
             ul.appendChild(li);
         }
-        });
+    });
     
     // find total score of a user
 function sumOfScores(user) {
@@ -71,6 +71,7 @@ async function logUserScore(e) {
     if (response.status == 201) {
       e.target.username.value = ''
       alert("Score added.")
+      window.location.reload();
     }
 
 }
