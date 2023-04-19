@@ -36,26 +36,36 @@ fetch(url)
     })
     .then((data) => {
         let users = data;
+    
+        // sort users by their total score
+        users.sort((userA, userB) => {
+            let totalScoreA = sumOfScores(userA.score);
+            let totalScoreB = sumOfScores(userB.score);
+    
+            return totalScoreB - totalScoreA;
+        });
+    
         let ul = document.getElementById('scoreList');
         
-        users.forEach((user) => {
-
-          let totalScore = 0;
-
-          for (let topic in user.score) {
-            totalScore += user.score[topic];
-          }
-          
-          let li = document.createElement('li');
-        //   let username = document.createElement('h3');
-          li.innerHTML = `${user.username}: ${totalScore}`;
-        //   li.appendChild(username);
-          ul.appendChild(li);
+        // make it only top 3 by looping
+        for (let i = 0; i < 3 && i < users.length; i++) {
+            let user = users[i];
+            // get sum score for the current user
+            let totalScore = sumOfScores(user.score);
+    
+            let li = document.createElement('li');
+            li.innerHTML = `${user.username}: ${totalScore}`;
+            ul.appendChild(li);
+        }
         });
-      });
-
-
-
-
-
-
+    
+    // find total score of a user
+    function sumOfScores(user) {
+        let totalScore = 0;
+    
+        for (let topic in user) {
+        totalScore += user[topic];
+        }
+    
+        return totalScore;
+    }
