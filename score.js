@@ -31,14 +31,15 @@ fetch(url)
     
     // find total score of a user
 function sumOfScores(user) {
-    let totalScore = 0;
+  let totalScore = 0;
 
-    for (let topic in user) {
+  for (let topic in user) {
     totalScore += user[topic];
-    }
+  }
 
-    return totalScore;
+  return totalScore;
 }
+
 
 let stringScores = localStorage.getItem("score");
 let allScores = JSON.parse(stringScores)
@@ -47,6 +48,7 @@ let musicScore = allScores["music"]
 let geoScore = allScores["geography"]
 let litScore = allScores["literature"]
 let historyScore = allScores["history"]
+
 
 const form = document.querySelector("#log-user-form");
 form.addEventListener("submit", logUserScore);
@@ -79,6 +81,3 @@ async function logUserScore(e) {
       alert("Score added.")
       window.location.reload();
     }
-
-}
-    
