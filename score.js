@@ -81,3 +81,4 @@ async function logUserScore(e) {
       alert("Score added.")
       window.location.reload();
     }
+}
