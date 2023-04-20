@@ -4,3 +4,64 @@ body {
 h1 {
   color: red;
 }
+
+/* #question {
+  margin-bottom: 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+#quiz {
+padding: 15px 30px;
+margin: 10px 0;
+border: 1px solid #ECECEC;
+border-radius: 3px;
+min-height: 250px;
+display: flex;
+/* justify-content: space-between; */
+align-items: center;
+align-content: center;
+flex-direction: column;
+position: relative;
+overflow: hidden;
+width: 100%;
+}
+
+.answers {
+  background-color: white;
+  width: 100%;
+  border: 0.1rem solid rgb(86,165,235, 0.25);
+  margin-bottom: 0.2rem;
+}
+
+
+.answers:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(255, 139, 167, 0.6);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+#list {
+  margin-top: 1rem;
+  width: 500px;
+  text-align: center;
+  list-style: none;
+}
+
+#list li {
+  padding: 0.2rem;
+  margin-bottom: 0.4rem;
+}
+
+
+#submit-button {
+  background-color: #ff8ba7;
+}
+
+#next-button {
+  background-color: #ffc6c7;
+}
