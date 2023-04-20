@@ -12,30 +12,41 @@ html {
     box-sizing: border-box;
     margin-bottom: 0;
     min-height: 100%;
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
+    /* background-color: #ffff; */
 
 }
 body{
     background-color: #FAEEE7;
     font-family: 'Kanit', sans-serif;
+    color: #33272A;
 }
 .navbar{
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
+    font-size: 1.5rem;
 }
 .navbar-edits{
     padding: 1rem 1.5rem;
     background-color: #FAEEE7;
 }
 
+#scoreList{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    margin: 1rem 0;
+}
+
 #score-section {
     display: flex;
-    height: 100vh;
+    height: 60vh;
     flex-direction: row-reverse;
     justify-content:center ;
     align-items: center;
-    margin: 0 3rem;
-    overflow: hidden;
+    margin: 0 3rem 1rem;
 
 }
 
@@ -50,12 +61,13 @@ li {
 }
 
 #scoreboard-left {
-    flex: 2;
+    flex: 4;
     text-align: center;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    height: 100vh;
+    height: inherit;
+
 }
 
 #form-div {
@@ -63,6 +75,10 @@ li {
     flex-direction: column;
     justify-content: center;
     flex: 1;
+    align-items: center;
+    padding-top: 0.5rem;
+    background-color: #FAEEE7;
+    text-align: center;
 }
 
 
@@ -71,6 +87,7 @@ li {
     justify-content: space-around;
     flex: 2;
     width: 100%;
+    height: auto;
 
 
 }
@@ -81,6 +98,7 @@ li {
     flex-wrap: wrap;
     width: 100%;
     align-items:flex-end;
+    height: inherit;
 }
 
 .column {
@@ -108,6 +126,11 @@ h1{
     font-family: 'Bebas Neue', cursive;
 
 }
+.title-div{
+    height: auto;
+    background-color: #ffff;
+    text-align: center;
+}
 
 .pink{
     background-color: #FF8BA7;
@@ -128,7 +151,55 @@ h1{
     padding: 0 3rem;
 }
 
-h5{
+h5, h4{
     font-family: 'Bebas Neue', cursive;
 }
 
+.form--group{
+    position: relative;
+}
+#usernameInput{
+    height: 100%;
+    width: 60%;
+    border-radius: 0.25rem;
+    border: 2px solid rgb(203, 203, 203);
+    font-family: inherit;
+    font-weight: inherit;
+    outline: none;
+    padding: 0.3rem;
+}
+#usernameInput:hover{
+    border-color: #7bd0ea;
+}
+#usernameInput:focus{
+    border-color: #639dad;
+}
+label {
+    position: absolute;
+    left: 0.5rem;
+    top: 1.2rem;
+    padding: 0 0.5rem;
+    transition: color 400ms ease-in;
+    color: #7b7b7b;
+}
+
+#score-button{
+    display: inline-block;
+    margin-left: auto;
+    margin-top: 1rem;
+    padding: 0.1rem 0.5rem;
+    font-family: inherit;
+    font-weight: inherit;
+    border-radius: 0.25rem;
+    background-color: rgb(218, 217, 217);
+    outline: none;
+    transition: background-color 200ms ease-in ;
+}
+
+#score-button:hover{
+    background-color: rgb(158, 158, 158);
+}
+
+#usernameInput:focus ~ label {
+    color: #c0c0c000;
+}
