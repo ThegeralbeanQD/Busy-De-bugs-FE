@@ -15,10 +15,10 @@
 </head>
 
 <body>
-     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
       <div
         class="container-fluid"
-        style="background-color: #faeee7; padding: 0px"
+        style="background-color: #ffff; padding: 0px"
       >
         <a class="navbar-brand" href="index.html"
           ><img
@@ -26,7 +26,7 @@
             alt="Logo"
             width="60"
             height="60"
-            class="d-inline-block align-text-top"
+            class="d-inline-block align-text-top logo-img"
           />
         </a>
         <button
@@ -62,20 +62,15 @@
       </div>
     </nav>
     <div id="body-container">
-        <h1>Scoreboard</h1>
+        <div class="title-div">
+            <h1>Scoreboard</h1>
+        </div>
         <section id="score-section">
             <div id="leaderboard">
                 <h2>Leaderboard</h2>
                 <ul id="scoreList"></ul>
             </div>
             <div id="scoreboard-left">
-                <div id="form-div">
-                    <form method="post" id="log-user-form">
-                        <label for="usernameInput">Username:</label>
-                        <input type="text" name="username" placeholder="Username" id="usernameInput">
-                        <input type="submit" value="Create">
-                    </form>
-                </div>
                 <section id="user-scores">
                     <div class="row">
                         <div class="column">
@@ -136,6 +131,16 @@
                 </section>
             </div>
         </section>
+        <div id="form-div">
+            <form method="post" id="log-user-form">
+                <h4>Join the leaderboard</h4>
+                <div class="form--group">
+                    <input type="text" name="username" id="usernameInput">
+                    <label for="usernameInput">Username</label>
+                    <input type="submit" value="Submit Score" id="score-button">
+                </div>
+            </form>
+        </div>
     </div>
 
 </body>
