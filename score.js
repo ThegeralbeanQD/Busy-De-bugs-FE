@@ -1,34 +1,18 @@
 const url = "https://brain-debug.onrender.com/users";
 const localURL = "http://localhost:3000/users";
 fetch(url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    let users = data;
 
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        let users = data;
-    
-        // sort users by their total score
-        users.sort((userA, userB) => {
-            let totalScoreA = sumOfScores(userA.score);
-            let totalScoreB = sumOfScores(userB.score);
-    
-            return totalScoreB - totalScoreA;
-        });
-    
-        let ul = document.getElementById('scoreList');
-        
-        // make it only top 3 by looping
-        for (let i = 0; i < 5 && i < users.length; i++) {
-            let user = users[i];
-            // get sum score for the current user
-            let totalScore = sumOfScores(user.score);
-    
-            let li = document.createElement('li');
-            li.innerHTML = `${user.username}: ${totalScore}`;
-            ul.appendChild(li);
-        }
+    // sort users by their total score
+    users.sort((userA, userB) => {
+      let totalScoreA = sumOfScores(userA.score);
+      let totalScoreB = sumOfScores(userB.score);
 
+      return totalScoreB - totalScoreA;
     });
 
     let ul = document.getElementById("scoreList");
