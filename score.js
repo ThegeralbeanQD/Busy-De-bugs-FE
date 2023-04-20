@@ -18,7 +18,7 @@ fetch(url)
         let ul = document.getElementById('scoreList');
         
         // make it only top 3 by looping
-        for (let i = 0; i < 10 && i < users.length; i++) {
+        for (let i = 0; i < 5 && i < users.length; i++) {
             let user = users[i];
             // get sum score for the current user
             let totalScore = sumOfScores(user.score);
