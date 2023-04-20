@@ -40,10 +40,13 @@ function sumOfScores(user) {
     return totalScore;
 }
 
-let allScores = localStorage.getItem("score");
-console.log(allScores);
+let stringScores = localStorage.getItem("score");
+let allScores = JSON.parse(stringScores)
 
-let musicScore, geoScore, litScore, historyScore = 0;
+let musicScore = allScores["music"]
+let geoScore = allScores["geography"]
+let litScore = allScores["literature"]
+let historyScore = allScores["history"]
 
 const form = document.querySelector("#log-user-form");
 form.addEventListener("submit", logUserScore);
