@@ -144,8 +144,11 @@ h1{
     padding: 0 3rem;
 }
 
-h5, h4{
+h5, h4, h2{
     font-family: 'Bebas Neue', cursive;
+}
+h2{
+    font-size: 3rem;
 }
 
 .form--group{
@@ -169,8 +172,8 @@ h5, h4{
 }
 label {
     position: absolute;
-    left: 0.5rem;
-    top: 1.2rem;
+    left: 3.2rem;
+    top: 0.4rem;
     padding: 0 0.5rem;
     transition: color 400ms ease-in;
     color: #7b7b7b;
@@ -195,4 +198,26 @@ label {
 
 #usernameInput:focus ~ label {
     color: #c0c0c000;
+}
+
+@media screen and (min-width: 1450px){
+    label {
+        position: absolute;
+        left: 4rem;
+        top: 0.4rem;
+        padding: 0 0.5rem;
+        transition: color 400ms ease-in;
+        color: #7b7b7b;
+    }
+}
+
+@media screen and (min-width: 1578px){
+    label {
+        position: absolute;
+        left: 1rem;
+        top: 1.2rem;
+        padding: 0 0.5rem;
+        transition: color 400ms ease-in;
+        color: #7b7b7b;
+    }
 }
