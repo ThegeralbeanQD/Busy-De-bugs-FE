@@ -69,7 +69,10 @@ async function logUserScore(e) {
     },
     body: JSON.stringify(data, null, 2),
   };
-  const response = await fetch("http://localhost:3000/users", options);
+  const response = await fetch(
+    "https://brain-debug.onrender.com/users",
+    options
+  );
 
   if (response.status == 201) {
     e.target.username.value = "";
