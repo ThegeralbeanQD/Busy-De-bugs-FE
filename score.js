@@ -41,7 +41,10 @@ function sumOfScores(user) {
 }
 
 let stringScores = localStorage.getItem("score");
+
 let allScores = JSON.parse(stringScores);
+temp = stringScores;
+console.log(temp);
 
 let musicScore = allScores["music"];
 let geoScore = allScores["geography"];
