@@ -6,6 +6,7 @@ h1 {
   position: absolute;
   left: 30%;
   top: 30%;
+  width: 60%;
 }
 
 #history-button {
@@ -68,4 +69,5 @@ a.topic {
 .navbar {
   margin: 0;
   padding: 0;
+  font-size: 30px;
 }
