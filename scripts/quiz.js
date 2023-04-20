@@ -72,7 +72,6 @@ const displayTopicQuizes = async (topic) => {
     answers.forEach((ans, index) => {
       const li = document.createElement('li')
       li.append(ans.answer)
-      console.log(topicQuizes[questionIndex].topic)
 
       li.setAttribute('class', 'answers')
       ol.appendChild(li)
@@ -99,7 +98,7 @@ const displayTopicQuizes = async (topic) => {
           }
         }
       })
-    })    // // console.log(localStorage.getItem(JSON.parse(score)))
+    })
   }
 
   nextQuestion()
@@ -108,6 +107,8 @@ const displayTopicQuizes = async (topic) => {
   // TODO - this should direct the user to the score page together with the data
   const submitAnswer = () => {
     console.log('questions over')
+    window.location.href = "../score.html";
+
   }
 }
 
