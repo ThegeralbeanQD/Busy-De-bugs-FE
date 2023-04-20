@@ -40,6 +40,9 @@ function sumOfScores(user) {
     return totalScore;
 }
 
+let allScores = localStorage.getItem("score");
+console.log(allScores);
+
 let musicScore, geoScore, litScore, historyScore = 0;
 
 const form = document.querySelector("#log-user-form");
