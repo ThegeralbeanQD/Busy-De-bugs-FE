@@ -96,7 +96,7 @@ li{
     flex-direction: column;
     flex-basis: 100%;
     align-items: center;
-    
+
 }
 
 #body-container{
@@ -105,7 +105,7 @@ li{
     /* justify-content:end; */
     max-height: 100vh;
 
-    
+
 }
 
 h1{
@@ -217,4 +217,16 @@ label {
         transition: color 400ms ease-in;
         color: #7b7b7b;
     }
+}
+/* links */
+
+.card-link {
+  text-decoration: none;
+  color: #33272A;
+  font-weight: 900;
+}
+
+.card-link:hover {
+  color: #ffff;
+  transition: color 200ms ease-in
 }

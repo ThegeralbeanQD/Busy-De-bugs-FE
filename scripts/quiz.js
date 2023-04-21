@@ -1,4 +1,4 @@
-const findTopic = localStorage.getItem("topic");
+const findTopic = sessionStorage.getItem("topic");
 
 const fetchQuiz = async (topic) => {
   const quizes = (
@@ -8,11 +8,18 @@ const fetchQuiz = async (topic) => {
 };
 
 const displayTopicQuizes = async (topic) => {
-  let score = {
-    music: 0,
-    history: 0,
-    literature: 0,
-    geography: 0
+
+    let score = {
+      music: 0,
+      history: 0,
+      literature: 0,
+      geography: 0
+    }
+
+  if (sessionStorage.getItem("score")) {
+    let userScore = JSON.parse((sessionStorage.getItem("score")))
+    console.log(typeof userScore)
+    score = {...score, ...userScore}
   }
 
   const topicQuizes = await fetchQuiz(topic)
@@ -87,12 +94,12 @@ const displayTopicQuizes = async (topic) => {
 
             if (topic.toLowerCase() !== 'random') {
               score[topic.toLowerCase()] += 1
-              localStorage.setItem("score", JSON.stringify(score))
+              sessionStorage.setItem("score", JSON.stringify(score))
               clicked = true
             }
             if (topic.toLowerCase() === 'random') {
               score[topicQuizes[questionIndex].topic.toLowerCase()] += 1
-              localStorage.setItem("score", JSON.stringify(score))
+              sessionStorage.setItem("score", JSON.stringify(score))
               clicked = true
             }
           } else {
