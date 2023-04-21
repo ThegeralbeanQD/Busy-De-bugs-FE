@@ -99,29 +99,6 @@ const displayTopicQuizes = async (topic) => {
               localStorage.setItem("score", JSON.stringify(score))
               clicked = true
             }
-
-            // create next button till last question - 1
-            if (questionIndex < topicQuizes.length - 1) {
-              let nextButton = document.createElement("input");
-              nextButton.type = "button";
-              nextButton.value = "Next";
-              nextButton.setAttribute("id", "next-button");
-              nextButton.addEventListener("click", nextQuestion);
-              nextButton.addEventListener("click", removeAlert);
-              quizDiv.appendChild(nextButton);
-            }
-
-            // create submit button for the last question
-            if (questionIndex === topicQuizes.length - 1) {
-              let submitButton = document.createElement("input");
-              submitButton.type = "button";
-              submitButton.value = "Submit";
-              submitButton.setAttribute("id", "submit-button");
-              submitButton.addEventListener("click", submitAnswer);
-              quizDiv.appendChild(submitButton);
-            }
-
-
           } else {
               // wrong question alert
               // remove another alert if it exits
@@ -134,7 +111,7 @@ const displayTopicQuizes = async (topic) => {
               let wrongDiv = document.createElement("div")
               wrongDiv.setAttribute("class", "alert alert-danger alert-dismissible fade show wrong w-50 position-absolute top-50 start-50 translate-middle text-center")
               wrongDiv.setAttribute("role", "alert")
-              wrongDiv.innerText = "Sorry, try again!"
+              wrongDiv.innerText = "Sorry, wrong answer!"
 
               let wrongButton = document.createElement("button")
               wrongButton.setAttribute("type", "button")
@@ -145,10 +122,34 @@ const displayTopicQuizes = async (topic) => {
               alertDiv.appendChild(wrongDiv)
               wrongDiv.appendChild(wrongButton)
               document.body.appendChild(alertDiv)
+              clicked = true
+              const removeListeners = document.querySelectorAll("li")
+              removeListeners.forEach(el => el.removeEventListener('click'))
           }
         }
+        // copy here
       })
     })
+        // create next button till last question - 1
+        if (questionIndex < topicQuizes.length - 1) {
+          let nextButton = document.createElement("input");
+          nextButton.type = "button";
+          nextButton.value = "Next";
+          nextButton.setAttribute("id", "next-button");
+          nextButton.addEventListener("click", nextQuestion);
+          nextButton.addEventListener("click", removeAlert);
+          quizDiv.appendChild(nextButton);
+        }
+
+        // create submit button for the last question
+        if (questionIndex === topicQuizes.length - 1) {
+          let submitButton = document.createElement("input");
+          submitButton.type = "button";
+          submitButton.value = "Submit";
+          submitButton.setAttribute("id", "submit-button");
+          submitButton.addEventListener("click", submitAnswer);
+          quizDiv.appendChild(submitButton);
+        }
   }
 
   nextQuestion();
@@ -164,4 +165,73 @@ const displayTopicQuizes = async (topic) => {
     removeDiv.remove()
   }
 
+  const ifClicked = () => {
+    if (!clicked) {
+      let answer = ans.is_correct
+      if (answer === true) {
+
+        // boostrap correct question alert button
+        // remove wrong answer alert if it exists
+        const removeWrongDiv = document.querySelector(".wrong")
+          if (removeWrongDiv) {
+            removeWrongDiv.remove()
+          }
+        let alertDiv = document.createElement("div")
+        alertDiv.setAttribute("class","position relative")
+        let correctDiv = document.createElement("div")
+        correctDiv.setAttribute("class", "alert alert-success alert-dismissible fade show correct w-50 position-absolute top-50 start-50 translate-middle text-center")
+        correctDiv.setAttribute("role", "alert")
+        correctDiv.innerText = "Congratz! You got it right! Click Next :)"
+
+        let correctButton = document.createElement("button")
+        correctButton.setAttribute("type", "button")
+        correctButton.setAttribute("class", "btn-close")
+        correctButton.setAttribute("data-bs-dismiss", "alert")
+        correctButton.setAttribute("aria-label", "Close")
+
+        alertDiv.appendChild(correctDiv)
+        correctDiv.appendChild(correctButton)
+        document.body.appendChild(alertDiv)
+
+        if (topic.toLowerCase() !== 'random') {
+          score[topic.toLowerCase()] += 1
+          // console.log(score)
+          localStorage.setItem("score", JSON.stringify(score))
+          clicked = true
+        }
+        if (topic.toLowerCase() === 'random') {
+          score[topicQuizes[questionIndex].topic.toLowerCase()] += 1
+          localStorage.setItem("score", JSON.stringify(score))
+          clicked = true
+        }
+      } else {
+          // wrong question alert
+          // remove another alert if it exits
+          const removeWrongDiv = document.querySelector(".wrong")
+          if (removeWrongDiv) {
+            removeWrongDiv.remove()
+          }
+          let alertDiv = document.createElement("div")
+          alertDiv.setAttribute("class","position relative")
+          let wrongDiv = document.createElement("div")
+          wrongDiv.setAttribute("class", "alert alert-danger alert-dismissible fade show wrong w-50 position-absolute top-50 start-50 translate-middle text-center")
+          wrongDiv.setAttribute("role", "alert")
+          wrongDiv.innerText = "Sorry, wrong answer!"
+
+          let wrongButton = document.createElement("button")
+          wrongButton.setAttribute("type", "button")
+          wrongButton.setAttribute("class", "btn-close")
+          wrongButton.setAttribute("data-bs-dismiss", "alert")
+          wrongButton.setAttribute("aria-label", "Close")
+
+          alertDiv.appendChild(wrongDiv)
+          wrongDiv.appendChild(wrongButton)
+          document.body.appendChild(alertDiv)
+          clicked = true
+          const removeListeners = document.querySelectorAll("li")
+          removeListeners.forEach(el => el.removeEventListener('click'))
+      }
+    }
+
+  }
 displayTopicQuizes(findTopic);
