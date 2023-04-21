@@ -123,11 +123,8 @@ const displayTopicQuizes = async (topic) => {
               wrongDiv.appendChild(wrongButton)
               document.body.appendChild(alertDiv)
               clicked = true
-              const removeListeners = document.querySelectorAll("li")
-              removeListeners.forEach(el => el.removeEventListener('click'))
           }
         }
-        // copy here
       })
     })
         // create next button till last question - 1
