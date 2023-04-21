@@ -40,7 +40,7 @@ function sumOfScores(user) {
   return totalScore;
 }
 
-let stringScores = localStorage.getItem("score");
+let stringScores = sessionStorage.getItem("score");
 
 let allScores = JSON.parse(stringScores);
 temp = stringScores;
@@ -94,3 +94,32 @@ async function logUserScore(e) {
     window.location.reload();
   }
 }
+
+
+
+// links
+
+const musicLink = document.querySelector('#Music')
+const literatureLink = document.querySelector('#Literature')
+const historyLink = document.querySelector('#History')
+const geographyLink = document.querySelector('#Geography')
+
+musicLink.addEventListener("click", function() {
+  let topic = musicLink.id
+  sessionStorage.setItem('topic', topic)
+})
+
+literatureLink.addEventListener("click", function() {
+  let topic = literatureLink.id
+  sessionStorage.setItem('topic', topic)
+})
+
+historyLink.addEventListener("click", function() {
+  let topic = historyLink.id
+  sessionStorage.setItem('topic', topic)
+})
+
+geographyLink.addEventListener("click", function() {
+  let topic = geographyLink.id
+  sessionStorage.setItem('topic', topic)
+})
