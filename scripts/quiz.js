@@ -16,19 +16,18 @@ const displayTopicQuizes = async (topic) => {
   }
 
   const topicQuizes = await fetchQuiz(topic)
+  const quizDiv = document.querySelector('#quiz')
 
   let questionIndex = -1;
 
   const nextQuestion = () => {
     // remove previous question
-    document.body.innerHTML = "";
+    quizDiv.innerHTML = "";
 
     // recreate elements
-    const div = document.createElement("div");
-    div.setAttribute("id", "quiz");
-    document.body.appendChild(div);
-    const h2 = document.createElement("h2");
+    const h3 = document.createElement("h3");
     const ol = document.createElement("ol");
+    ol.setAttribute("id", "list");
 
     // get quiz div
     const quizList = document.querySelector("#quiz");
@@ -43,27 +42,9 @@ const displayTopicQuizes = async (topic) => {
 
     // question
     let question = topicQuizes[questionIndex].question;
-    h2.append(question);
-    h2.setAttribute("id", "question");
-    quizList.appendChild(h2);
-
-    // create next button till last question - 1
-    if (questionIndex < topicQuizes.length - 1) {
-      let nextButton = document.createElement("input");
-      nextButton.type = "button";
-      nextButton.value = "Next";
-      nextButton.addEventListener("click", nextQuestion);
-      document.body.appendChild(nextButton);
-    }
-
-    // create submit button for the last question
-    if (questionIndex === topicQuizes.length - 1) {
-      let submitButton = document.createElement("input");
-      submitButton.type = "button";
-      submitButton.value = "Submit";
-      submitButton.addEventListener("click", submitAnswer);
-      document.body.appendChild(submitButton);
-    }
+    h3.append(question);
+    h3.setAttribute("id", "question");
+    quizList.appendChild(h3);
 
     // answers
     let answers = topicQuizes[questionIndex].answers;
@@ -80,10 +61,32 @@ const displayTopicQuizes = async (topic) => {
         if (!clicked) {
           let answer = ans.is_correct
           if (answer === true) {
-            alert('You got it!')
+
+            // boostrap correct question alert button
+            // remove wrong answer alert if it exists
+            const removeWrongDiv = document.querySelector(".wrong")
+              if (removeWrongDiv) {
+                removeWrongDiv.remove()
+              }
+            let alertDiv = document.createElement("div")
+            alertDiv.setAttribute("class","position relative")
+            let correctDiv = document.createElement("div")
+            correctDiv.setAttribute("class", "alert alert-success alert-dismissible fade show correct w-50 position-absolute top-50 start-50 translate-middle text-center")
+            correctDiv.setAttribute("role", "alert")
+            correctDiv.innerText = "Congratz! You got it right! Click Next :)"
+
+            let correctButton = document.createElement("button")
+            correctButton.setAttribute("type", "button")
+            correctButton.setAttribute("class", "btn-close")
+            correctButton.setAttribute("data-bs-dismiss", "alert")
+            correctButton.setAttribute("aria-label", "Close")
+
+            alertDiv.appendChild(correctDiv)
+            correctDiv.appendChild(correctButton)
+            document.body.appendChild(alertDiv)
+
             if (topic.toLowerCase() !== 'random') {
               score[topic.toLowerCase()] += 1
-              // console.log(score)
               localStorage.setItem("score", JSON.stringify(score))
               clicked = true
             }
@@ -93,22 +96,65 @@ const displayTopicQuizes = async (topic) => {
               clicked = true
             }
           } else {
-            alert('Try again!')
+              // wrong question alert
+              // remove another alert if it exits
+              const removeWrongDiv = document.querySelector(".wrong")
+              if (removeWrongDiv) {
+                removeWrongDiv.remove()
+              }
+              let alertDiv = document.createElement("div")
+              alertDiv.setAttribute("class","position relative")
+              let wrongDiv = document.createElement("div")
+              wrongDiv.setAttribute("class", "alert alert-danger alert-dismissible fade show wrong w-50 position-absolute top-50 start-50 translate-middle text-center")
+              wrongDiv.setAttribute("role", "alert")
+              wrongDiv.innerText = "Sorry, wrong answer!"
+
+              let wrongButton = document.createElement("button")
+              wrongButton.setAttribute("type", "button")
+              wrongButton.setAttribute("class", "btn-close")
+              wrongButton.setAttribute("data-bs-dismiss", "alert")
+              wrongButton.setAttribute("aria-label", "Close")
+
+              alertDiv.appendChild(wrongDiv)
+              wrongDiv.appendChild(wrongButton)
+              document.body.appendChild(alertDiv)
+              clicked = true
           }
         }
       })
     })
+        // create next button till last question - 1
+        if (questionIndex < topicQuizes.length - 1) {
+          let nextButton = document.createElement("input");
+          nextButton.type = "button";
+          nextButton.value = "Next";
+          nextButton.setAttribute("id", "next-button");
+          nextButton.addEventListener("click", nextQuestion);
+          nextButton.addEventListener("click", removeAlert);
+          quizDiv.appendChild(nextButton);
+        }
+
+        // create submit button for the last question
+        if (questionIndex === topicQuizes.length - 1) {
+          let submitButton = document.createElement("input");
+          submitButton.type = "button";
+          submitButton.value = "Submit";
+          submitButton.setAttribute("id", "submit-button");
+          submitButton.addEventListener("click", submitAnswer);
+          quizDiv.appendChild(submitButton);
+        }
   }
 
   nextQuestion();
 
-
-  // TODO - this should direct the user to the score page together with the data
   const submitAnswer = () => {
     console.log('questions over')
     window.location.href = "../score.html";
-
   }
 }
 
+  const removeAlert = () => {
+    const removeDiv = document.querySelector(".correct")
+    removeDiv.remove()
+  }
 displayTopicQuizes(findTopic);
