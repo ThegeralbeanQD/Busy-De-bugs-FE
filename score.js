@@ -1,5 +1,5 @@
 const url = "https://brain-debug.onrender.com/users";
-
+const localURL = "http://localhost:3000/users";
 fetch(url)
   .then((response) => {
     return response.json();
@@ -18,7 +18,7 @@ fetch(url)
     let ul = document.getElementById("scoreList");
 
     // make it only top 3 by looping
-    for (let i = 0; i < 3 && i < users.length; i++) {
+    for (let i = 0; i < 10 && i < users.length; i++) {
       let user = users[i];
       // get sum score for the current user
       let totalScore = sumOfScores(user.score);
@@ -40,10 +40,27 @@ function sumOfScores(user) {
   return totalScore;
 }
 
-let musicScore,
-  geoScore,
-  litScore,
-  historyScore = 0;
+let stringScores = localStorage.getItem("score");
+
+let allScores = JSON.parse(stringScores);
+temp = stringScores;
+console.log(temp);
+
+let musicScore = allScores["music"];
+let geoScore = allScores["geography"];
+let litScore = allScores["literature"];
+let historyScore = allScores["history"];
+
+//get the id for the score
+let musicId = document.querySelector("#musicScore");
+let geoId = document.querySelector("#geographyScore");
+let litId = document.querySelector("#literatureScore");
+let historyId = document.querySelector("#historyScore");
+// set the score for relative topics
+musicId.textContent = `${musicScore}/5`;
+geoId.textContent = `${geoScore}/5`;
+litId.textContent = `${litScore}/5`;
+historyId.textContent = `${historyScore}/5`;
 
 const form = document.querySelector("#log-user-form");
 form.addEventListener("submit", logUserScore);
@@ -69,10 +86,11 @@ async function logUserScore(e) {
     },
     body: JSON.stringify(data, null, 2),
   };
-  const response = await fetch("http://localhost:3000/users", options);
+  const response = await fetch(url, options);
 
   if (response.status == 201) {
     e.target.username.value = "";
     alert("Score added.");
+    window.location.reload();
   }
 }
