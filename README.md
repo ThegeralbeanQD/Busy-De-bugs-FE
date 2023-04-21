@@ -1,5 +1,7 @@
 # Frontend for Busy-De-bugs Quiz
 
+This is the front end of our Quiz website
+
 ## Website link
 
 https://braindebug.onrender.com/index.html
