@@ -1,71 +1,122 @@
-body {
-  background-color: #faeee7;
-}
-h1 {
-  color: #33272a;
-  position: absolute;
-  left: 30%;
-  top: 30%;
+@import"navbar_edits.css";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400;1,600&display=swap');
+
+
+body{
+  background-color: #FAEEE7;
+  font-family: 'Kanit', sans-serif;
+  color: #33272A;
+
 }
 
-#history-button {
+h1 {
+  color: #33272a;
+  margin: 0;
+  font-family: 'Bebas Neue', cursive;
+}
+li{
+  margin: 1rem 0;
+  list-style: none;
+  transform: translateX(-10%);
+}
+
+/* #history-button {
   background-color: #ff8ba7;
-  height: 10rem;
+  height: 5rem;
   width: 90%;
 }
 #geography-button {
   background-color: #ff8ba7;
-  height: 10rem;
+  height: 5rem;
   width: 90%;
 }
 
 #music-button {
   background-color: #ffc6c7;
-  height: 10rem;
+  height: 5rem;
   width: 90%;
 }
 #literature-button {
   background-color: #ffc6c7;
-  height: 10rem;
+  height: 5rem;
   width: 90%;
-}
+}*/
 
 #random-button {
-  background-color: #ffc6c7;
-  height: 10rem;
-  width: 90%;
-}
+  height: 3rem;
+  width: 5rem;
+  text-align: center;
+  padding: 0.2rem;
+  border-style: none;
+  background-color: #ffff;
+} 
 section {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 90%;
-  min-height: 20%;
-  transform: translate(-50%, -50%);
-
   padding: 1rem;
-
-  border-radius: 1rem;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
+.pink{
+  background-color: #FF8BA7;
+}
+.light-pink{
+  background-color: #FFC6C7;
+}
 button {
-  font-size: 2rem;
-  font-family: monospace;
+  font-size: 1.5rem;
   border: 1px solid black;
   border-radius: 5px;
   cursor: pointer;
-  margin: 3rem;
   padding: 0;
+  width: 15rem;
+  height: 3.5rem;
 }
 
-a.topic {
+a.categories {
   width: 30%;
 }
 .navbar {
   margin: 0;
   padding: 0;
+}
+.main-container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 150vh;
+}
+.title-container{
+  flex: 2;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+.button-section{
+  background-color: #ffff;
+  display: flex;
+  padding: 1rem 0;
+}
+.scoreboard{
+  background-color: #FAEEE7;
+}
+
+.random-section{
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  flex: 1;
+  background-color: #ffff;
+  padding-bottom: 1rem;
+}
+
+a.random-category{
+  transform:translateX(-25%);
+}
+
+#dice{
+  width: 2.5rem;
+  left: 1px;
 }
