@@ -1,0 +1,17 @@
+.navbar{
+    /* margin: 0; */
+    padding: 0;
+    font-size: 1.2rem;
+}
+.nav-link{
+    margin: 0 1rem;
+}
+
+.logo-img{
+    border-radius: 100%;
+    margin: 0.5rem 0 0.5rem 0.5rem;
+}
+.navbar-edits{
+    padding: 1rem 1.5rem;
+    background-color: #FAEEE7;
+}
