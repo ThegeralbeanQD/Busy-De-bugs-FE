@@ -91,8 +91,12 @@ a.categories {
   text-align: justify;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   margin: 2rem 0;
+  background-image:  url("herobanner.png");
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  
 }
 .button-section{
   background-color: #ffff;
