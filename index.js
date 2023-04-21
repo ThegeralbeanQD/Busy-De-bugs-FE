@@ -6,25 +6,25 @@ const randomButton = document.querySelector('#random-button')
 
 musicButton.addEventListener("click", function() {
   let topic = musicButton.innerText
-  localStorage.setItem('topic', topic)
+  sessionStorage.setItem('topic', topic)
 })
 
 literatureButton.addEventListener("click", function() {
   let topic = literatureButton.innerText
-  localStorage.setItem('topic', topic)
+  sessionStorage.setItem('topic', topic)
 })
 
 historyButton.addEventListener("click", function() {
   let topic = historyButton.innerText
-  localStorage.setItem('topic', topic)
+  sessionStorage.setItem('topic', topic)
 })
 
 geographyButton.addEventListener("click", function() {
   let topic = geographyButton.innerText
-  localStorage.setItem('topic', topic)
+  sessionStorage.setItem('topic', topic)
 })
 
 randomButton.addEventListener("click", function() {
   let topic = randomButton.innerText
-  localStorage.setItem('topic', topic)
+  sessionStorage.setItem('topic', topic)
 })
