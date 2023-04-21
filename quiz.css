@@ -32,14 +32,6 @@ h1 {
   padding: 0;
 }
 
-/* #question {
-  margin-bottom: 14px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-} */
 
 #quiz {
 padding: 15px 30px;
@@ -84,11 +76,33 @@ width: 100%;
   margin-bottom: 0.4rem;
 }
 
-
-#submit-button {
-  background-color: #ff8ba7;
+#next-button{
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  font-family: inherit;
+  font-weight: inherit;
+  border-radius: 0.25rem;
+  background-color: rgb(218, 217, 217);
+  outline: none;
+  transition: background-color 200ms ease-in ;
 }
 
-#next-button {
-  background-color: #ffc6c7;
+#next-button:hover{
+  background-color: rgb(158, 158, 158);
+}
+
+
+#submit-button{
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  font-family: inherit;
+  font-weight: inherit;
+  border-radius: 0.25rem;
+  background-color: rgb(158, 158, 158);
+  outline: none;
+  transition: background-color 200ms ease-in ;
+}
+
+#submit-button:hover{
+  background-color: rgb(218, 217, 217);
 }

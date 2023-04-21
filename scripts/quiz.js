@@ -25,9 +25,6 @@ const displayTopicQuizes = async (topic) => {
     quizDiv.innerHTML = "";
 
     // recreate elements
-    // const div = document.createElement("div");
-    // div.setAttribute("id", "quiz");
-    // document.body.appendChild(div);
     const h3 = document.createElement("h3");
     const ol = document.createElement("ol");
     ol.setAttribute("id", "list");
@@ -90,7 +87,6 @@ const displayTopicQuizes = async (topic) => {
 
             if (topic.toLowerCase() !== 'random') {
               score[topic.toLowerCase()] += 1
-              // console.log(score)
               localStorage.setItem("score", JSON.stringify(score))
               clicked = true
             }
@@ -160,75 +156,5 @@ const displayTopicQuizes = async (topic) => {
   const removeAlert = () => {
     const removeDiv = document.querySelector(".correct")
     removeDiv.remove()
-  }
-
-  const ifClicked = () => {
-    if (!clicked) {
-      let answer = ans.is_correct
-      if (answer === true) {
-
-        // boostrap correct question alert button
-        // remove wrong answer alert if it exists
-        const removeWrongDiv = document.querySelector(".wrong")
-          if (removeWrongDiv) {
-            removeWrongDiv.remove()
-          }
-        let alertDiv = document.createElement("div")
-        alertDiv.setAttribute("class","position relative")
-        let correctDiv = document.createElement("div")
-        correctDiv.setAttribute("class", "alert alert-success alert-dismissible fade show correct w-50 position-absolute top-50 start-50 translate-middle text-center")
-        correctDiv.setAttribute("role", "alert")
-        correctDiv.innerText = "Congratz! You got it right! Click Next :)"
-
-        let correctButton = document.createElement("button")
-        correctButton.setAttribute("type", "button")
-        correctButton.setAttribute("class", "btn-close")
-        correctButton.setAttribute("data-bs-dismiss", "alert")
-        correctButton.setAttribute("aria-label", "Close")
-
-        alertDiv.appendChild(correctDiv)
-        correctDiv.appendChild(correctButton)
-        document.body.appendChild(alertDiv)
-
-        if (topic.toLowerCase() !== 'random') {
-          score[topic.toLowerCase()] += 1
-          // console.log(score)
-          localStorage.setItem("score", JSON.stringify(score))
-          clicked = true
-        }
-        if (topic.toLowerCase() === 'random') {
-          score[topicQuizes[questionIndex].topic.toLowerCase()] += 1
-          localStorage.setItem("score", JSON.stringify(score))
-          clicked = true
-        }
-      } else {
-          // wrong question alert
-          // remove another alert if it exits
-          const removeWrongDiv = document.querySelector(".wrong")
-          if (removeWrongDiv) {
-            removeWrongDiv.remove()
-          }
-          let alertDiv = document.createElement("div")
-          alertDiv.setAttribute("class","position relative")
-          let wrongDiv = document.createElement("div")
-          wrongDiv.setAttribute("class", "alert alert-danger alert-dismissible fade show wrong w-50 position-absolute top-50 start-50 translate-middle text-center")
-          wrongDiv.setAttribute("role", "alert")
-          wrongDiv.innerText = "Sorry, wrong answer!"
-
-          let wrongButton = document.createElement("button")
-          wrongButton.setAttribute("type", "button")
-          wrongButton.setAttribute("class", "btn-close")
-          wrongButton.setAttribute("data-bs-dismiss", "alert")
-          wrongButton.setAttribute("aria-label", "Close")
-
-          alertDiv.appendChild(wrongDiv)
-          wrongDiv.appendChild(wrongButton)
-          document.body.appendChild(alertDiv)
-          clicked = true
-          const removeListeners = document.querySelectorAll("li")
-          removeListeners.forEach(el => el.removeEventListener('click'))
-      }
-    }
-
   }
 displayTopicQuizes(findTopic);
