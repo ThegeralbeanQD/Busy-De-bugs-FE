@@ -1,0 +1,71 @@
+body {
+  background-color: #faeee7;
+}
+h1 {
+  color: #33272a;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+}
+
+#history-button {
+  background-color: #ff8ba7;
+  height: 10rem;
+  width: 90%;
+}
+#geography-button {
+  background-color: #ff8ba7;
+  height: 10rem;
+  width: 90%;
+}
+
+#music-button {
+  background-color: #ffc6c7;
+  height: 10rem;
+  width: 90%;
+}
+#literature-button {
+  background-color: #ffc6c7;
+  height: 10rem;
+  width: 90%;
+}
+
+#random-button {
+  background-color: #ffc6c7;
+  height: 10rem;
+  width: 90%;
+}
+section {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 90%;
+  min-height: 20%;
+  transform: translate(-50%, -50%);
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  font-size: 2rem;
+  font-family: monospace;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 3rem;
+  padding: 0;
+}
+
+a.topic {
+  width: 30%;
+}
+.navbar {
+  margin: 0;
+  padding: 0;
+}

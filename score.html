@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="score.js"></script>
+    <link rel="icon" href="/images/favoicon.jpg" sizes="any" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="score.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <title>Scoreboard</title>
+  </head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid" style="background-color: #ffff; padding: 0px">
+            <a class="navbar-brand" href="index.html"><img src="/images/favoicon.jpg" alt="Logo" width="60" height="60"
+                    class="d-inline-block align-text-top logo-img" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Brain De-Bugs</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navbar-collapse col-lg-2" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="score.html">Score</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="body-container">
+        <div class="title-div">
+            <h1>Scoreboard</h1>
+        </div>
+        <section id="score-section">
+            <div id="leaderboard">
+                <h2>Leaderboard</h2>
+                <ul id="scoreList"></ul>
+                <div id="form-div">
+                    <form method="post" id="log-user-form">
+                        <h4>Join the leaderboard</h4>
+                        <div class="form--group">
+                            <input type="text" name="username" id="usernameInput">
+                            <label for="usernameInput">Username</label>
+                            <input type="submit" value="Submit Score" id="score-button">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="scoreboard-left">
+                <section id="user-scores">
+                    <div class="row">
+                        <div class="column">
+                            <div id="music-score">
+                                <div class="card card-edits" style="width: auto;">
+                                    <div class="card-body pink">
+                                        <h5 class="card-title">Music</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted" id ="musicScore"></h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Study Link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div id="geo-score">
+                                <div class="card card-edits" style="width: auto;">
+                                    <div class="card-body light-pink">
+                                        <h5 class="card-title">Geography</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted" id = "geographyScore"></h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Study Link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <div id="lit-score">
+                                <div class="card card-edits" style="width: auto;">
+                                    <div class="card-body pink">
+                                        <h5 class="card-title">Literature</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted" id = "literatureScore"></h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Study Link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div id="history-score">
+                                <div class="card card-edits" style="width: auto;">
+                                    <div class="card-body light-pink">
+                                        <h5 class="card-title">History</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted"id = "historyScore"></h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Study Link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="text-center p-4 fixed-bottom" style="background-color: #faeee7">
+            Created by Ajaya, Diego and Gi
+        </div>
+    </footer>
+
+</html>
