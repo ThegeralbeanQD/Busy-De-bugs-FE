@@ -36,7 +36,7 @@ The user can submit their score and appear in the leaderboard if they want. A sm
 
 ## known bugs/Issues
 
-- you can click util you find teh correct answer
+- you can click until you find teh correct answer
 
 ## Future Features
 
